@@ -1,6 +1,9 @@
 # MOIA 
 Under updating........
 
+__________________________________________
+Codes
+__________________________________________
 This Repository contains supplementary files for the project: “Constraint-Based Models for Dominating Protein Interaction Networks” 
 The following Repository includes the following matlab functions:
 
@@ -15,6 +18,9 @@ The following Repository includes the following matlab functions:
 
 5-Get_MMDSets: This Function developed to solve BigMatrix by ILP solver to generate Multiple minimum dominating sets From the grpah adjacency Matrix.
     % The function also find the critical nodes as the intersection between the first generated Two MDSets.
+ __________________________________________
+ DATASETS
+ __________________________________________
     
 6-Hint: Subfolder contains the protein intwraction networks (PPIN) dataset for Human and Yeast.
 For Human PPI networks, we considered three different datasets obtained from H. Sapiens in the HINT database (version 3/10/2018) http://hint.yulab.org/download/. The first one of these datasets contains 63,684 high-quality binary protein (HHQBP) interactions between 12,815 human proteins. The second dataset contains 116,456 high-quality co-complex protein (HHQCP) interactions between 12,352 human proteins. However, a network of 180,140 combined protein (HCP) interactions between 15,744 human proteins is considered as the third dataset.
