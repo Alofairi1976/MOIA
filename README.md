@@ -10,7 +10,7 @@ The MDSet problem is to find a DS of minimum size in a graph (Figures 1.4C and 1
 
 Nacher et al. (2014) presented the following ILP formulation to solve the MDSet problem.
 
-![image](https://user-images.githubusercontent.com/53053110/115181234-be891600-a0d7-11eb-99bb-db1d9ccc8857.png)
+![image](https://user-images.githubusercontent.com/53053110/115181382-1b84cc00-a0d8-11eb-99a7-bf9133b71067.png)
 
 
 1.3 The critical set
