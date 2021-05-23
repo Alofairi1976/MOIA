@@ -1,0 +1,75 @@
+N = Number of genes in given graph(ex.5313 in yeast).
+m= Number of all essential genes in the given dataset(ex.1022 in yeast)
+
+n=N-m
+x= number of essential genes in targeted MDSet(ex.134).
+k= the MDSet size in the targeted Dataset (ex.921 in yeast).
+
+
+
+contingency.table <- data.frame(matrix(nrow=2, ncol=2))
+
+rownames(contingency.table) <- c("predicted.target", "non.predicted")
+
+colnames(contingency.table) <- c("class.member", "non.member")
+
+
+
+## Assign the values one by one to make sure we put them in the right
+
+## place (this is not necessary, we could enter the 4 values in a
+
+## single instruction).
+
+contingency.table["predicted.target", "class.member"] <- x ## Number of marked genes in the selection
+
+contingency.table["predicted.target", "non.member"] <- k - x ## Number of non-marked genes in the selection
+
+contingency.table["non.predicted", "class.member"] <- m - x ## Number of marked genes outside of the selection
+
+contingency.table["non.predicted", "non.member"] <- n - (k - x) ## Number of non-marked genes in the selection
+
+
+
+
+
+print(contingency.table)
+
+## Print marginal sums
+
+(contingency.row.sum <- apply(contingency.table, 1, sum))
+
+(contingency.col.sum <- apply(contingency.table, 2, sum))
+
+
+
+## Create a contingency table with marginal sums
+
+contingency.table.margins <- cbind(contingency.table, contingency.row.sum)
+
+contingency.table.margins <- rbind(contingency.table.margins, apply(contingency.table.margins, 2, sum))
+
+names(contingency.table.margins) <- c(names(contingency.table), "total")
+
+rownames(contingency.table.margins) <- c(rownames(contingency.table), "total")
+
+print(contingency.table.margins)
+
+## Check the total
+
+print(sum(contingency.table)) ## The value shoudl equal N, since every
+
+## possible gene must be assigned to one
+
+## cell of the contingency table.
+
+#print(N)
+## Run Fisher's exact test
+
+ftest.result <- fisher.test(x=contingency.table, alternative="greater")
+
+print(ftest.result)
+
+attributes(ftest.result) ## Display the list of attribute of the object returned by ftest
+
+print (ftest.result$p.value) ## Print the P-value of the exact test
